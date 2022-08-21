@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studio Ghibli Films</title>
+</head>
+<body>
+    <div class="conatainer">
+        <div id="app">
+             {{ message }}
+        </div>
+    </div>
+    <p id="movies"></p>
+<script type="module" src="./server.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+<script>
+    let app = new Vue({
+        el: '#app',
+        data: {
+            message: 'Studio Ghibli Films'
+        }
+    })
+</script>
+</body>
+</html>
