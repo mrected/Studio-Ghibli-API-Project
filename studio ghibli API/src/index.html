@@ -9,17 +9,38 @@
 <body>
     <div class="conatainer">
         <div id="app">
-             {{ message }}
+             <h1>{{ message }}</h1>
+             <p v-for="title in titles">{{title}}</p>
         </div>
     </div>
     <p id="movies"></p>
-<script type="module" src="./server.js"></script>
+<script src="./server.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
 <script>
     let app = new Vue({
         el: '#app',
         data: {
-            message: 'Studio Ghibli Films'
+            message: 'Studio Ghibli Films',
+            titles: []
+        },
+        methods: {
+            getData() {
+                const movieTitles = []
+
+            fetch("https://ghibliapi.herokuapp.com/films")
+                .then(response => response.json())
+                .then(films => {
+                    films.forEach(titles =>  {
+                        movieTitles.push(titles.title);
+                    
+                    }) 
+                })
+
+                this.titles = movieTitles
+            }
+        },
+        mounted() {
+            this.getData();
         }
     })
 </script>
